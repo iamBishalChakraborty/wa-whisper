@@ -12,14 +12,35 @@ class LogsScreen extends StatefulWidget {
   State<LogsScreen> createState() => _LogsScreenState();
 }
 
-class _LogsScreenState extends State<LogsScreen> {
+class _LogsScreenState extends State<LogsScreen> with WidgetsBindingObserver {
   late Future<List<ChatLog>> _logsFuture;
+  late StorageService _storage;
 
   @override
   void initState() {
     super.initState();
-    final storage = StorageService(DatabaseService());
-    _logsFuture = storage.getLogs();
+    WidgetsBinding.instance.addObserver(this);
+    _storage = StorageService(DatabaseService());
+    _refreshLogs();
+  }
+  
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _refreshLogs();
+    }
+  }
+  
+  void _refreshLogs() {
+    setState(() {
+      _logsFuture = _storage.getLogs();
+    });
   }
 
   @override
@@ -31,6 +52,13 @@ class _LogsScreenState extends State<LogsScreen> {
       appBar: AppBar(
         title: const Text('Chat Logs'),
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _refreshLogs,
+            tooltip: 'Refresh logs',
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(

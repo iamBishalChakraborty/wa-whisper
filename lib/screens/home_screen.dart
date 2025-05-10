@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const LogsScreen()),
-                  );
+                  ).then((_) => _loadRecentLogs());
                   break;
                 case 'developer':
                   Navigator.push(
@@ -209,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (_) => const LogsScreen()),
-                        );
+                        ).then((_) => _loadRecentLogs());
                       },
                       icon: const Icon(Icons.history, size: 18),
                       label: const Text('View All'),

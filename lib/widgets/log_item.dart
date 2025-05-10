@@ -20,34 +20,33 @@ class LogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.phone, size: 18, color: colorScheme.primary),
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: Text(
-                        log.phoneNumber,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: colorScheme.primary,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Icon(Icons.phone, size: 18, color: colorScheme.primary),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: Text(
+                          log.phoneNumber,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: colorScheme.primary,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        overflow: TextOverflow
-                            .ellipsis, // Added for very long numbers
                       ),
-                    ),
-                  ],
-                ),
-                Flexible(
-                  child: Text(
-                    DateFormat.yMd().add_jm().format(log.timestamp),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                    textAlign: TextAlign.end, // Align to the end
-                    overflow: TextOverflow.fade, // Added for very long dates
+                    ],
                   ),
+                ),
+                const SizedBox(width: 8), // Added for spacing
+                Text(
+                  DateFormat.yMd().add_jm().format(log.timestamp),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                  textAlign: TextAlign.end,
+                  overflow: TextOverflow.fade,
                 ),
               ],
             ),

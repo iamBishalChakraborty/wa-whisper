@@ -48,12 +48,21 @@ class UpdateService {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                     content: Text(
-                        'Update cancelled. Some features might not be available.')),
+                  'Update cancelled. Some features might not be available.',
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                )),
               );
             } else if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                    content: Text('Immediate update failed: $immediateResult')),
+                    content: Text(
+                  'Immediate update failed: $immediateResult',
+                  softWrap: true,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                )),
               );
             }
           }
@@ -69,7 +78,11 @@ class UpdateService {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                      'A new version is downloading. You will be prompted to install when ready.'),
+                    'A new version is downloading. You will be prompted to install when ready.',
+                    softWrap: true,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   duration: Duration(seconds: 5),
                 ),
               );
@@ -84,7 +97,11 @@ class UpdateService {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                     content: Text(
-                        'Flexible update could not be started: $flexibleResult')),
+                  'Flexible update could not be started: $flexibleResult',
+                  softWrap: true,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                )),
               );
             }
           }
@@ -95,7 +112,11 @@ class UpdateService {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                   content: Text(
-                      'An update is available, but cannot be installed automatically at this moment.')),
+                'An update is available, but cannot be installed automatically at this moment.',
+                softWrap: true,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              )),
             );
           }
         }
@@ -112,7 +133,13 @@ class UpdateService {
       debugPrint('Error during in-app update check: $e');
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error checking for updates: $e')),
+          SnackBar(
+              content: Text(
+            'Error checking for updates: $e',
+            softWrap: true,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          )),
         );
       }
     }

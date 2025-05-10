@@ -26,19 +26,27 @@ class LogItem extends StatelessWidget {
                   children: [
                     Icon(Icons.phone, size: 18, color: colorScheme.primary),
                     const SizedBox(width: 8),
-                    Text(
-                      log.phoneNumber,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: colorScheme.primary,
+                    Flexible(
+                      child: Text(
+                        log.phoneNumber,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: colorScheme.primary,
+                        ),
+                        overflow: TextOverflow
+                            .ellipsis, // Added for very long numbers
                       ),
                     ),
                   ],
                 ),
-                Text(
-                  DateFormat.yMd().add_jm().format(log.timestamp),
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: colorScheme.onSurfaceVariant,
+                Flexible(
+                  child: Text(
+                    DateFormat.yMd().add_jm().format(log.timestamp),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                    textAlign: TextAlign.end, // Align to the end
+                    overflow: TextOverflow.fade, // Added for very long dates
                   ),
                 ),
               ],
@@ -55,6 +63,9 @@ class LogItem extends StatelessWidget {
                 child: Text(
                   log.message!,
                   style: theme.textTheme.bodyMedium,
+                  softWrap: true,
+                  maxLines: 4, // Added maxLines
+                  overflow: TextOverflow.ellipsis, // Changed to ellipsis
                 ),
               ),
             ],

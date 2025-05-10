@@ -29,6 +29,8 @@ class AppFooter extends StatelessWidget {
                 color: theme.colorScheme.primary,
                 // decoration: TextDecoration.underline, // Removed underline
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           Padding(
@@ -42,6 +44,8 @@ class AppFooter extends StatelessWidget {
           Text(
             'Ad Free',
             style: theme.textTheme.bodyMedium,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

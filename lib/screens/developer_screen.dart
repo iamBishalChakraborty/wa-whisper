@@ -84,12 +84,18 @@ class DeveloperScreen extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: Icon(Icons.person, color: colorScheme.primary),
-                        title: const Text('Bishal Chakraborty'),
+                        title: const Text(
+                          'Bishal Chakraborty',
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         contentPadding: EdgeInsets.zero,
                       ),
                       ListTile(
                         leading: Icon(Icons.email, color: colorScheme.primary),
-                        title: const Text('cbishal6@gmail.com'),
+                        title: const Text(
+                          'cbishal6@gmail.com',
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         contentPadding: EdgeInsets.zero,
                       ),
                     ],
@@ -104,6 +110,8 @@ class DeveloperScreen extends StatelessWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: colorScheme.onSurfaceVariant,
                   ),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
                 ),
               ),
             ],

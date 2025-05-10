@@ -45,7 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
     if (_phone.isEmpty) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter a phone number')),
+        const SnackBar(
+            content: Text(
+          'Please enter a phone number',
+          softWrap: true,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        )),
       );
       return;
     }
@@ -76,7 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error starting chat: ${e.toString()}')),
+        SnackBar(
+            content: Text(
+          'Error starting chat: ${e.toString()}',
+          softWrap: true,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        )),
       );
     }
   }
@@ -133,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.primary,
                       ),
+                  softWrap: true,
                 ),
               ),
 
@@ -188,6 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
+                    softWrap: true,
                   ),
                   if (_recentLogs.isNotEmpty)
                     TextButton.icon(

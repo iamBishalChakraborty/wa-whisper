@@ -124,7 +124,13 @@ class _PhoneInputState extends State<PhoneInput> {
               prefixIcon: Icon(Icons.phone,
                   color: colorScheme.primary.withAlpha((255 * 0.7).round())),
               helperText: 'Enter number without country code',
-              helperStyle: TextStyle(color: colorScheme.onSurfaceVariant),
+              helperStyle: TextStyle(
+                color: colorScheme.onSurfaceVariant,
+                overflow: TextOverflow.ellipsis, // Added overflow
+                // softWrap is implicitly true for helperText if it needs to wrap,
+                // but explicitly setting maxLines is better.
+              ),
+              helperMaxLines: 2, // Added helperMaxLines for TextField
             ),
             onChanged: (_) => _updatePhone(),
           ),

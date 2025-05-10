@@ -48,7 +48,12 @@ class UpdateDialog extends StatelessWidget {
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Error installing update: $e'),
+                    content: Text(
+                      'Error installing update: $e',
+                      softWrap: true,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 );
                 // Pop the dialog on error

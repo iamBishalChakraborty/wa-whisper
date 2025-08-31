@@ -34,7 +34,7 @@ dependencies:
   url_launcher: ^6.2.5  # For launching WhatsApp
   shared_preferences: ^2.2.2  # For storing logs
   country_picker: ^2.0.25  # For country code selection
-  intl: ^0.19.0  # For formatting
+  intl: 0.20.2  # For formatting
   sqflite: ^2.4.1  # For SQLite database
   path: ^1.9.0  # For managing database path
   package_info_plus: ^5.0.1  # For getting app version

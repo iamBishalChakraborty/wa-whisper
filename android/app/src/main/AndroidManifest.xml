@@ -38,9 +38,20 @@
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
+        <!-- Existing query for PROCESS_TEXT used by Flutter engine -->
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+
+        <!-- Allow querying for WhatsApp and WhatsApp Business packages (Android 11+ package visibility) -->
+        <package android:name="com.whatsapp"/>
+        <package android:name="com.whatsapp.w4b"/>
+
+        <!-- Allow querying intents that handle the whatsapp:// scheme -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="whatsapp"/>
         </intent>
     </queries>
 </manifest>

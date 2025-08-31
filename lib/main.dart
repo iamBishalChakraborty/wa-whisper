@@ -85,11 +85,11 @@ class _MyAppState extends State<MyApp> {
           filled: true,
           fillColor: Colors.grey.shade50,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 2,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          clipBehavior: Clip.antiAlias,
+          surfaceTintColor: Colors.transparent,
         ),
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.green.shade600,
